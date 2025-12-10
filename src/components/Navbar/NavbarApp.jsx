@@ -8,9 +8,20 @@ function NavbarApp() {
     const [empleado, setEmpleado] = useState(null);
 
     useEffect(() => {
+        // Cargar empleado inicial
         const rawEmpleado = localStorage.getItem("empleado");
         const datosEmpleado = rawEmpleado ? JSON.parse(rawEmpleado) : null;
         setEmpleado(datosEmpleado);
+
+        // Escuchar cambios en localStorage
+        const handleStorageChange = () => {
+            const rawEmpleado = localStorage.getItem("empleado");
+            const datosEmpleado = rawEmpleado ? JSON.parse(rawEmpleado) : null;
+            setEmpleado(datosEmpleado);
+        };
+
+        window.addEventListener('storage', handleStorageChange);
+        return () => window.removeEventListener('storage', handleStorageChange);
     }, []);
 
     const esAdministrador = empleado?.cargo === "Administrador";
@@ -20,9 +31,10 @@ function NavbarApp() {
         localStorage.removeItem("access");
         localStorage.removeItem("refresh");
         localStorage.removeItem("empleado");
+        localStorage.removeItem("user");
         setEmpleado(null); 
         // Redirige a la landing page (ruta raíz /)
-        navigate("/"); 
+        window.location.href = "/";
     }
 
     return (

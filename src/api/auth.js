@@ -17,8 +17,29 @@ export async function login({ username, password }) {
     // 3. Configurar el header de autorización para futuras llamadas
     client.defaults.headers.common['Authorization'] = `Bearer ${access}`;
 
-    // Nota: Si necesitas datos adicionales del empleado, deberías crear un endpoint en el backend
-    // Por ahora, trabajamos solo con los datos del user que vienen del login
+    // 4. Mapear user a empleado para compatibilidad con el Navbar
+    // NOTA: Esto es temporal hasta que el backend tenga endpoint /pos/me/
+    
+    // Verificar si es superuser o staff de múltiples formas
+    const esAdmin = user.is_superuser === true || 
+                    user.is_staff === true || 
+                    user.username?.toLowerCase().startsWith('admin');
+    
+    const empleadoData = {
+        nombre_completo: user.username || "Usuario",
+        cargo: esAdmin ? "Administrador" : "Vendedor",
+        ...user
+    };
+    
+    console.log("=== DEBUG LOGIN ===");
+    console.log("Usuario autenticado:", user);
+    console.log("is_superuser:", user.is_superuser);
+    console.log("is_staff:", user.is_staff);
+    console.log("Es administrador:", esAdmin);
+    console.log("Cargo asignado:", empleadoData.cargo);
+    console.log("==================");
+    
+    localStorage.setItem("empleado", JSON.stringify(empleadoData));
     
     return tokenResponse.data;
 }
