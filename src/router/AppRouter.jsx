@@ -199,7 +199,7 @@ export default function AppRouter() {
 
             {/* Dashboard Financiero */}
             <Route
-                path="/dashboard"
+                path="/dashboard/finanzas"
                 element={
                     <PrivateRoute>
                         <PrivateLayout>
