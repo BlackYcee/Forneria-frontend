@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import client from "../../api/client";
+import endpoints from "../../api/endpoints";
 import Loader from "../../components/UI/Loader";
 import Table from "../../components/UI/Table";
 

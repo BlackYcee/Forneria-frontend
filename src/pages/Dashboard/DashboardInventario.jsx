@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import client from "../../api/client";
+import endpoints from "../../api/endpoints";
 import Loader from "../../components/UI/Loader";
 import { Bar, Doughnut } from "react-chartjs-2";
 import {
@@ -32,11 +33,11 @@ export default function DashboardInventario() {
     setLoading(true);
     try {
       // Cargar productos
-      const productosRes = await client.get("/pos/productos/");
+      const productosRes = await client.get(endpoints.productos.list);
       setProductos(productosRes.data.results || productosRes.data);
 
       // Cargar categorías
-      const categoriasRes = await client.get("/pos/categorias/");
+      const categoriasRes = await client.get(endpoints.categorias.list);
       setCategorias(categoriasRes.data.results || categoriasRes.data);
 
       // Filtrar productos con stock bajo

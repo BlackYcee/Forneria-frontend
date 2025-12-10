@@ -1,22 +1,13 @@
-<<<<<<< Updated upstream
-// Endpoints de la API del backend Forneria - Compatible con rama migracion
-=======
 // Endpoints de la API del backend Forneria
->>>>>>> Stashed changes
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 export const endpoints = {
   // === AUTH ===
   auth: {
-<<<<<<< Updated upstream
     login: '/api/auth/login/',
     logout: '/api/auth/logout/',
     tokenRefresh: '/api/auth/token/refresh/',
-=======
-    login: '/api/login/',
-    logout: '/api/logout/',
     currentUser: '/api/user/',
->>>>>>> Stashed changes
   },
 
   // === ANALYTICS / DASHBOARD FINANCIERO ===
@@ -56,85 +47,48 @@ export const endpoints = {
 
   // === POS / VENTAS ===
   ventas: {
-<<<<<<< Updated upstream
     list: '/pos/ventas/',
     detail: (id) => `/pos/ventas/${id}/`,
     create: '/pos/ventas/',
     dashboard: '/pos/dashboard/',
-=======
-    list: '/api/ventas/',
-    detail: (id) => `/api/ventas/${id}/`,
-    create: '/api/ventas/',
-    dashboard: '/dashboard/ventas/',
->>>>>>> Stashed changes
   },
 
   // === PRODUCTOS / INVENTARIO ===
   productos: {
-<<<<<<< Updated upstream
     list: '/pos/productos/',
     detail: (id) => `/pos/productos/${id}/`,
     create: '/pos/productos/',
     update: (id) => `/pos/productos/${id}/`,
     delete: (id) => `/pos/productos/${id}/`,
-=======
-    list: '/api/productos/',
-    detail: (id) => `/api/productos/${id}/`,
-    create: '/api/productos/',
-    update: (id) => `/api/productos/${id}/`,
-    delete: (id) => `/api/productos/${id}/`,
->>>>>>> Stashed changes
   },
 
   // === CLIENTES ===
   clientes: {
-<<<<<<< Updated upstream
     list: '/pos/clientes/',
     detail: (rut) => `/pos/clientes/${rut}/`,
     create: '/pos/clientes/',
     update: (id) => `/pos/clientes/${id}/`,
     delete: (id) => `/pos/clientes/${id}/`,
-=======
-    list: '/api/clientes/',
-    detail: (id) => `/api/clientes/${id}/`,
-    create: '/api/clientes/',
-    update: (id) => `/api/clientes/${id}/`,
-    delete: (id) => `/api/clientes/${id}/`,
->>>>>>> Stashed changes
   },
 
   // === CATEGORÍAS ===
   categorias: {
-<<<<<<< Updated upstream
     list: '/pos/categorias/',
     detail: (id) => `/pos/categorias/${id}/`,
-=======
-    list: '/api/categorias/',
-    detail: (id) => `/api/categorias/${id}/`,
->>>>>>> Stashed changes
   },
 
   // === LOTES ===
   lotes: {
-<<<<<<< Updated upstream
     list: '/pos/lotes/',
     detail: (id) => `/pos/lotes/${id}/`,
     create: '/pos/lotes/',
     update: (id) => `/pos/lotes/${id}/`,
     delete: (id) => `/pos/lotes/${id}/`,
     byProduct: (productId) => `/pos/productos/${productId}/lotes/`,
-=======
-    list: '/api/lotes/',
-    detail: (id) => `/api/lotes/${id}/`,
-    create: '/api/lotes/',
-    update: (id) => `/api/lotes/${id}/`,
-    delete: (id) => `/api/lotes/${id}/`,
->>>>>>> Stashed changes
   },
 
   // === PEDIDOS ===
   pedidos: {
-<<<<<<< Updated upstream
     list: '/pedidos/',
     detail: (id) => `/pedidos/${id}/`,
     activos: '/pedidos/activos/',
@@ -154,11 +108,6 @@ export const endpoints = {
   // === MOVIMIENTOS INVENTARIO ===
   movimientos: {
     list: '/pos/movimientos-inventario/',
-=======
-    list: '/api/pedidos/',
-    detail: (id) => `/api/pedidos/${id}/`,
-    activos: '/api/pedidos/activos/',
->>>>>>> Stashed changes
   },
 };
 
