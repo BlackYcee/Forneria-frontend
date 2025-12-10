@@ -32,7 +32,11 @@ export default function DashboardFinanciero() {
   const [resumen, setResumen] = useState(null);
   const [ventasDiarias, setVentasDiarias] = useState(null);
   const [productosTop, setProductosTop] = useState([]);
+<<<<<<< Updated upstream
   const [ventasPorCategoria, setVentasPorCategoria] = useState([]);
+=======
+  const [ventasPorCategoria, setVentasPorCategoria] = useState(null);
+>>>>>>> Stashed changes
   const [loading, setLoading] = useState(true);
   const [fechaInicio, setFechaInicio] = useState("");
   const [fechaFin, setFechaFin] = useState("");
@@ -54,6 +58,7 @@ export default function DashboardFinanciero() {
 
       // Cargar top productos
       const productosResponse = await client.get(endpoints.analytics.productosTop, { params });
+<<<<<<< Updated upstream
       setProductosTop(Array.isArray(productosResponse.data) ? productosResponse.data : []);
 
       // Cargar ventas por categoría
@@ -65,6 +70,16 @@ export default function DashboardFinanciero() {
       // Reiniciar estados en caso de error
       setProductosTop([]);
       setVentasPorCategoria([]);
+=======
+      setProductosTop(productosResponse.data);
+
+      // Cargar ventas por categoría
+      const categoriasResponse = await client.get(endpoints.analytics.ventasPorCategoria, { params });
+      setVentasPorCategoria(categoriasResponse.data);
+
+    } catch (err) {
+      console.error("Error cargando dashboard:", err);
+>>>>>>> Stashed changes
     } finally {
       setLoading(false);
     }
@@ -88,7 +103,11 @@ export default function DashboardFinanciero() {
     loadDashboard();
   };
 
+<<<<<<< Updated upstream
   // Datos para gráficos
+=======
+  // Datos para el gráfico de ventas diarias
+>>>>>>> Stashed changes
   const ventasDiariasData = ventasDiarias ? {
     labels: ventasDiarias.labels || [],
     datasets: [
@@ -105,7 +124,12 @@ export default function DashboardFinanciero() {
     ],
   } : null;
 
+<<<<<<< Updated upstream
   const categoriasData = (ventasPorCategoria && Array.isArray(ventasPorCategoria)) ? {
+=======
+  // Datos para el gráfico de ventas por categoría
+  const categoriasData = ventasPorCategoria ? {
+>>>>>>> Stashed changes
     labels: ventasPorCategoria.map((c) => c.categoria),
     datasets: [
       {
@@ -181,7 +205,11 @@ export default function DashboardFinanciero() {
         <Loader />
       ) : (
         <>
+<<<<<<< Updated upstream
           {/* KPIs del día */}
+=======
+          {/* KPI Cards - Métricas del día */}
+>>>>>>> Stashed changes
           {kpisHoy && (
             <div className="row mb-4">
               <div className="col-md-3">
@@ -295,8 +323,14 @@ export default function DashboardFinanciero() {
             </div>
           )}
 
+<<<<<<< Updated upstream
           {/* Top Productos y Categorías */}
           <div className="row mb-4">
+=======
+          {/* Top Productos y Ventas por Categoría */}
+          <div className="row mb-4">
+            {/* Top Productos */}
+>>>>>>> Stashed changes
             <div className="col-md-6">
               <div className="card">
                 <div className="card-header bg-light">
@@ -331,6 +365,10 @@ export default function DashboardFinanciero() {
               </div>
             </div>
 
+<<<<<<< Updated upstream
+=======
+            {/* Ventas por Categoría */}
+>>>>>>> Stashed changes
             <div className="col-md-6">
               <div className="card">
                 <div className="card-header bg-light">
